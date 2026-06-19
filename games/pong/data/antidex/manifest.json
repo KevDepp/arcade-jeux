@@ -1,0 +1,20 @@
+{
+  "marker": "antidex_project",
+  "marker_version": 1,
+  "project_id": "73fc8b53-0217-4b56-86b7-a0162a83bf9c",
+  "project_name": "pong",
+  "layout_version": 1,
+  "execution_mode": "litellm",
+  "ag_conversation": {
+    "started": false,
+    "started_at": null,
+    "last_used_at": null,
+    "last_reset_at": null
+  },
+  "created_at": "2026-03-27T14:52:14.238Z",
+  "updated_at": "2026-03-28T11:00:00.896Z",
+  "antidex_orchestrator": {
+    "name": "Antidex",
+    "version": "0.0.0"
+  }
+}

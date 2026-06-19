@@ -1,0 +1,39 @@
+{
+  "schema": "antidex.long_job.history.v1",
+  "generated_at": "2026-03-28T11:04:48.284Z",
+  "run_id": "c046a89b-e059-40d9-8397-755379a6e429",
+  "task_id": "T-001_implement_pong",
+  "current_pipeline": {
+    "run_status": "implementing",
+    "developer_status": "ready_for_review",
+    "manager_decision": "completed",
+    "active_turn_role": null,
+    "summary": "ACCEPTED T-001_implement_pong (see data/tasks/T-001_implement_pong/manager_review.md)"
+  },
+  "counts": {
+    "attempts_total": 0,
+    "terminal_attempts": 0,
+    "successful_attempts": 0
+  },
+  "latest_attempt": null,
+  "latest_manager_review": {
+    "decision": "ACCEPTED",
+    "reviewedAt": "2026-03-28T12:04:00.7041371+01:00",
+    "turnNonce": "turn-80f990e89d43423a9cf5",
+    "reasons": [
+      "index.html and script.js have been created successfully.",
+      "Code conforms to requirements (HTML5 Canvas, basic CSS/JS, Player vs AI logic).",
+      "Controls and rendering rules were addressed in script.js."
+    ],
+    "goalCheck": [],
+    "evidenceAction": null,
+    "rerunJustification": [],
+    "reworkRequest": [],
+    "nextActions": [
+      "none (End of task list)"
+    ],
+    "referencedJobIds": [],
+    "excerpt": "# Manager Review - T-001_implement_pong\r\n\r\nDecision: **ACCEPTED**\r\nReviewed_at: 2026-03-28T12:04:00.7041371+01:00\r\nTurn nonce: turn-80f990e89d43423a9cf5\r\n\r\nReasons (short):\r\n- index.html and script.js have been created successfully.\r\n- Code conforms to requirements (HTML5 Canvas, basic CSS/JS, Player vs AI logic).\r\n- Controls and rendering rules were addressed in script.js.\r\n\r\nWhat is good:\r\n- Clean split between HTML and JS.\r\n- Bouncing angle feature implemented for dynamic gameplay.\r\n\r\nNext actions:\r\n- none (End of task list)\r\n\r\nCommit:\r\n- c4e3d7875008a9aee55de4e2ce5af8bda711cd36\r\n"
+  },
+  "attempts": []
+}

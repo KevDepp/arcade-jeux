@@ -1,0 +1,38 @@
+{
+  "schema": "antidex.long_job.history.v1",
+  "generated_at": "2026-03-28T13:00:12.410Z",
+  "run_id": "338d985a-9eec-4775-8e9e-878ba125d7c6",
+  "task_id": "T-001_project_setup",
+  "current_pipeline": {
+    "run_status": "implementing",
+    "developer_status": "ongoing",
+    "manager_decision": "continue",
+    "active_turn_role": null,
+    "summary": "ACCEPTED T-001_project_setup -> next T-002_car_physics (see data/tasks/T-001_project_setup/manager_review.md)"
+  },
+  "counts": {
+    "attempts_total": 0,
+    "terminal_attempts": 0,
+    "successful_attempts": 0
+  },
+  "latest_attempt": null,
+  "latest_manager_review": {
+    "decision": "ACCEPTED",
+    "reviewedAt": "2026-03-28T13:59:20.593Z",
+    "turnNonce": "turn-2d5dd9d184004e258dcb",
+    "reasons": [
+      "The basic HTML5 canvas structure, CSS, and main JS loop with \requestAnimationFrame are implemented correctly.",
+      "Manager instructions were mostly followed, but dev placed files in src/. Moved them to root to simplify the setup for zero-install execution."
+    ],
+    "goalCheck": [],
+    "evidenceAction": null,
+    "rerunJustification": [],
+    "reworkRequest": [],
+    "nextActions": [
+      "T-002_car_physics"
+    ],
+    "referencedJobIds": [],
+    "excerpt": "﻿# Manager Review - T-001_project_setup\n\nDecision: **ACCEPTED**\nReviewed_at: 2026-03-28T13:59:20.593Z\nTurn nonce: turn-2d5dd9d184004e258dcb\n\nReasons (short):\n- The basic HTML5 canvas structure, CSS, and main JS loop with \requestAnimationFrame are implemented correctly.\n- Manager instructions were mostly followed, but dev placed files in src/. Moved them to root to simplify the setup for zero-install execution.\n\nWhat is good:\n- The game loop logic and basic rendering work perfectly out of the box.\n\nNext actions:\n- T-002_car_physics\n\nCommit:\n- 5d34114\r\n"
+  },
+  "attempts": []
+}

@@ -1,0 +1,9 @@
+{
+    "task_id": "T-002_ai-easy-hard",
+    "agent": "developer_antigravity",
+    "run_id": "ag-T-002_ai-easy-hard-c8c36a9effd947a7",
+    "ack_path": "data/antigravity_runs/ag-T-002_ai-easy-hard-c8c36a9effd947a7/ack.json",
+    "result_path": "data/antigravity_runs/ag-T-002_ai-easy-hard-c8c36a9effd947a7/result.json",
+    "artifacts_dir": "data/antigravity_runs/ag-T-002_ai-easy-hard-c8c36a9effd947a7/artifacts/",
+    "summary": "IA implémentée avec Facile (Random+Block) et Difficile (Minimax AlphaBeta). UI mise à jour."
+}

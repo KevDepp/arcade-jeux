@@ -1,0 +1,8 @@
+{
+  "run_id": "ag-M-005_final-validation-9747ee7d9b5e404e",
+  "status": "done",
+  "started_at": "2026-02-26T15:40:14+01:00",
+  "finished_at": "2026-02-26T15:46:00+01:00",
+  "summary": "Completed final validation in browser. Found that JvJ and Undo work perfectly, but AI modes are completely broken (game soft-locks). Updated doc/TESTING_PLAN.md with bug report, created task T-006_fix_ai_not_playing. The UI is generally good but the select dropdown lacks contrast.",
+  "output": "See data/tasks/M-005_final-validation/dev_result.md for a detailed report."
+}

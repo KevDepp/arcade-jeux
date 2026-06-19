@@ -1,0 +1,9 @@
+{
+    "task_id": "M-005_final-validation",
+    "agent": "developer_antigravity",
+    "run_id": "ag-M-005_final-validation-9747ee7d9b5e404e",
+    "ack_path": "data/antigravity_runs/ag-M-005_final-validation-9747ee7d9b5e404e/ack.json",
+    "result_path": "data/antigravity_runs/ag-M-005_final-validation-9747ee7d9b5e404e/result.json",
+    "artifacts_dir": "data/antigravity_runs/ag-M-005_final-validation-9747ee7d9b5e404e/artifacts/",
+    "summary": "Validation finished. AI bug found. Task T-006_fix_ai_not_playing created."
+}

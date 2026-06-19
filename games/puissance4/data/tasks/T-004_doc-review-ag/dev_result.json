@@ -1,0 +1,9 @@
+{
+    "task_id": "T-004_doc-review-ag",
+    "agent": "developer_antigravity",
+    "run_id": "ag-T-004_doc-review-ag-3e32f49bf31d4ca0",
+    "ack_path": "data/antigravity_runs/ag-T-004_doc-review-ag-3e32f49bf31d4ca0/ack.json",
+    "result_path": "data/antigravity_runs/ag-T-004_doc-review-ag-3e32f49bf31d4ca0/result.json",
+    "artifacts_dir": "data/antigravity_runs/ag-T-004_doc-review-ag-3e32f49bf31d4ca0/artifacts",
+    "summary": "Reviewed documentation (SPEC/TODO/TESTING_PLAN/DECISIONS). Added a minor checklist item regarding the game mode selector in TESTING_PLAN.md."
+}

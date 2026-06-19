@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Puissance 4</title>
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Bungee&family=Nunito:wght@400;600;700&display=swap"
+    rel="stylesheet" />
+</head>
+
+<body>
+  <main class="app">
+    <header class="header">
+      <p class="eyebrow">Puissance 4</p>
+      <h1>Puissance 4</h1>
+      <p class="subtitle">Deux joueurs, un seul ecran. Choisissez une colonne pour jouer.</p>
+    </header>
+
+    <section class="panel">
+      <div class="status">
+        <p id="status" class="status-text" aria-live="polite"></p>
+        <span id="statusChip" class="status-chip" data-player="1">Tour: Joueur 1</span>
+      </div>
+      <div class="controls">
+        <button id="undoBtn" class="btn" disabled>Annuler (3)</button>
+        <button id="resetBtn" class="btn">Rejouer</button>
+        <select id="modeSelect" class="btn mode-select" aria-label="Mode de jeu">
+          <option value="pvp">2 joueurs</option>
+          <option value="ai-easy">vs IA Facile</option>
+          <option value="ai-hard">vs IA Difficile</option>
+        </select>
+      </div>
+    </section>
+
+    <section class="board-shell">
+      <div id="board" class="board" role="grid" aria-label="Grille Puissance 4"></div>
+    </section>
+
+    <footer class="legend">
+      <div class="legend-item">
+        <span class="legend-dot p1"></span>
+        <span>Joueur 1</span>
+      </div>
+      <div class="legend-item">
+        <span class="legend-dot p2"></span>
+        <span>Joueur 2</span>
+      </div>
+    </footer>
+  </main>
+
+  <script type="module" src="src/main.js"></script>
+</body>
+
+</html>

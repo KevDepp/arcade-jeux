@@ -1,0 +1,20 @@
+{
+  "marker": "antidex_project",
+  "marker_version": 1,
+  "project_id": "35320525-1075-4847-9d00-9f7a853a5306",
+  "project_name": "car_race",
+  "layout_version": 1,
+  "execution_mode": "litellm",
+  "ag_conversation": {
+    "started": false,
+    "started_at": null,
+    "last_used_at": null,
+    "last_reset_at": null
+  },
+  "created_at": "2026-03-28T12:54:57.360Z",
+  "updated_at": "2026-03-28T12:54:57.392Z",
+  "antidex_orchestrator": {
+    "name": "Antidex",
+    "version": "0.0.0"
+  }
+}

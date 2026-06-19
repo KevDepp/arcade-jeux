@@ -1,0 +1,7 @@
+{
+    "updated_at": "2026-02-26T16:26:00+01:00",
+    "task_id": "T-006_fix_ai_not_playing",
+    "stage": "writing",
+    "note": "Updating cursorrules and CSS",
+    "expected_silence_ms": 120000
+}

@@ -1,0 +1,31 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>2-Player Car Racing Game</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div id="ui-layer">
+        <div id="setup-screen">
+            <h1>Car Racing</h1>
+            <label for="lap-input">Number of Laps to win:</label>
+            <input type="number" id="lap-input" value="3" min="1" max="100">
+            <button id="start-btn">Start Game</button>
+            <div class="controls-info">
+                <p><span style="color:red; font-weight:bold;">Player 1 (Red)</span>: W A S D</p>
+                <p><span style="color:blue; font-weight:bold;">Player 2 (Blue)</span>: Arrow Keys</p>
+            </div>
+        </div>
+        <div id="game-over-screen" style="display: none;">
+            <h1 id="winner-text">Player X Wins!</h1>
+            <button id="restart-btn">Play Again</button>
+        </div>
+    </div>
+    <div id="game-container">
+        <canvas id="gameCanvas" width="800" height="600"></canvas>
+    </div>
+    <script src="game.js"></script>
+</body>
+</html>

@@ -1,0 +1,21 @@
+{
+  "schema": "antidex.long_job.history.v1",
+  "generated_at": "2026-03-28T13:08:05.663Z",
+  "run_id": "338d985a-9eec-4775-8e9e-878ba125d7c6",
+  "task_id": "T-004_car_collision",
+  "current_pipeline": {
+    "run_status": "implementing",
+    "developer_status": "blocked",
+    "manager_decision": null,
+    "active_turn_role": null,
+    "summary": "Orchestrator: manager review postconditions failed for T-004_car_collision (see data/tasks/T-004_car_collision/questions/Q-manager-re-2026-03-28T13-07-56.md)."
+  },
+  "counts": {
+    "attempts_total": 0,
+    "terminal_attempts": 0,
+    "successful_attempts": 0
+  },
+  "latest_attempt": null,
+  "latest_manager_review": null,
+  "attempts": []
+}

@@ -1,0 +1,8 @@
+{
+  "run_id": "ag-T-006_fix_ai_not_playing-b859651befbc4a6a",
+  "status": "done",
+  "started_at": "2026-02-26T16:18:27+01:00",
+  "finished_at": "2026-02-26T16:26:00+01:00",
+  "summary": "Investigated the AI issue (T-006) and found it was a false positive. The browser subagent in M-005 failed to click the native <select> properly, leaving the game in PVP mode. I have documented this limitation and rules for testing the AI in agents/AG_cursorrules.md so it won't happen again. Also fixed the CSS contrast issue on the game mode select.",
+  "output": "CSS contrast fixed in styles.css. AG_cursorrules.md updated. TESTING_PLAN.md updated to reflect AI works."
+}

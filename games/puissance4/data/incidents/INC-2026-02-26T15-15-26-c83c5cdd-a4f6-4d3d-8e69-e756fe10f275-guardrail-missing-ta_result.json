@@ -1,0 +1,18 @@
+{
+  "where": "guardrail/missing_task_spec",
+  "run_id": "c83c5cdd-a4f6-4d3d-8e69-e756fe10f275",
+  "project_cwd": "C:\\Users\\kdeplus\\OneDrive - Université Libre de Bruxelles\\Bureau\\code\\Games\\puissance4",
+  "task_id": "T-006_fix_ai_not_playing",
+  "expected": "Pipeline to advance smoothly",
+  "observed": "Missing task spec for T-006_fix_ai_not_playing (see data/tasks/T-006_fix_ai_not_playing/questions/Q-missing-sp-2026-02-26T15-15-26.md)",
+  "last_error": {
+    "message": "Missing task spec for T-006_fix_ai_not_playing (see data/tasks/T-006_fix_ai_not_playing/questions/Q-missing-sp-2026-02-26T15-15-26.md)",
+    "at": "2026-02-26T15:15:26.924Z",
+    "where": "guardrail/missing_task_spec"
+  },
+  "attempts": 1,
+  "corrector_enabled": true,
+  "would_trigger_corrector": true,
+  "fix_status": "failed",
+  "fix_error": "Corrector turn timed out"
+}

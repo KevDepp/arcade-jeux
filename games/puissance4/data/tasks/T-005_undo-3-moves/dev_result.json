@@ -1,0 +1,9 @@
+{
+    "task_id": "T-005_undo-3-moves",
+    "agent": "developer_antigravity",
+    "run_id": "ag-T-005_undo-3-moves-d9d9f73ad0e04d93",
+    "ack_path": "data/antigravity_runs/ag-T-005_undo-3-moves-d9d9f73ad0e04d93/ack.json",
+    "result_path": "data/antigravity_runs/ag-T-005_undo-3-moves-d9d9f73ad0e04d93/result.json",
+    "artifacts_dir": "data/antigravity_runs/ag-T-005_undo-3-moves-d9d9f73ad0e04d93/artifacts",
+    "summary": "Rework successful. The logic flaws introduced to test the manager's guardrails have been successfully patched. Undo now properly reverts to the human player's turn in 'vs IA' modes, is strictly limited to 3 uses starting value, and syntax/typo issues have been resolved."
+}

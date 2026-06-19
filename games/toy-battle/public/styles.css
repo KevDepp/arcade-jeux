@@ -1,0 +1,1811 @@
+:root {
+  color-scheme: light;
+  --ink: #1b2430;
+  --muted: #5c6778;
+  --line: #d4dbe6;
+  --panel: #f7f4ec;
+  --surface: #fffdf8;
+  --blue: #2267b5;
+  --red: #c94842;
+  --green: #2f8f69;
+  --yellow: #d7a824;
+  --shadow: 0 12px 30px rgba(32, 38, 46, 0.12);
+  font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-width: 320px;
+  color: var(--ink);
+  background: linear-gradient(180deg, #ecf5f2 0%, #f8f2e5 60%, #e9eef8 100%);
+}
+
+button {
+  font: inherit;
+}
+
+.app-shell {
+  min-height: 100vh;
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+  gap: 12px;
+  padding: 14px;
+}
+
+.top-bar,
+.table-area,
+.hand-area,
+.side-panel,
+.action-log,
+.control-strip {
+  background: rgba(255, 253, 248, 0.92);
+  border: 1px solid rgba(88, 96, 112, 0.18);
+  box-shadow: var(--shadow);
+}
+
+.top-bar {
+  display: grid;
+  grid-template-columns: minmax(180px, 1fr) minmax(260px, 440px) auto;
+  gap: 12px;
+  align-items: center;
+  padding: 12px 14px;
+  border-radius: 8px;
+}
+
+.title-block h1 {
+  margin: 0;
+  font-size: 1.25rem;
+  letter-spacing: 0;
+}
+
+.title-block p {
+  margin: 3px 0 0;
+  color: var(--muted);
+  font-size: 0.9rem;
+}
+
+.score-row {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  gap: 8px;
+}
+
+.score-pill {
+  min-width: 112px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  padding: 8px 10px;
+  background: #ffffff;
+}
+
+.score-pill strong {
+  display: block;
+  font-size: 0.88rem;
+}
+
+.score-pill span {
+  font-size: 0.82rem;
+  color: var(--muted);
+}
+
+.terrain-controls {
+  display: grid;
+  grid-template-columns: minmax(110px, 150px) 1fr;
+  gap: 6px 10px;
+  align-items: center;
+}
+
+.terrain-controls label {
+  color: var(--muted);
+  font-size: 0.78rem;
+  font-weight: 700;
+}
+
+.terrain-controls select {
+  width: 100%;
+  min-height: 38px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: #ffffff;
+  color: var(--ink);
+  padding: 7px 9px;
+  font: inherit;
+}
+
+.terrain-status-card {
+  grid-column: 1 / -1;
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 4px 8px;
+  align-items: start;
+  border: 1px solid rgba(215, 168, 36, 0.38);
+  border-radius: 8px;
+  padding: 7px 8px;
+  background: #fffaf0;
+  font-size: 0.76rem;
+}
+
+.terrain-status-card strong {
+  font-size: 0.78rem;
+}
+
+.terrain-status-badge {
+  border: 1px solid rgba(122, 78, 0, 0.24);
+  border-radius: 999px;
+  padding: 2px 7px;
+  background: #f1b52d;
+  color: #362500;
+  font-size: 0.68rem;
+  font-weight: 800;
+  text-transform: uppercase;
+}
+
+.terrain-status-card ul {
+  grid-column: 1 / -1;
+  margin: 0;
+  padding-left: 18px;
+  color: var(--muted);
+  line-height: 1.22;
+}
+
+.main-grid {
+  display: grid;
+  grid-template-columns: minmax(520px, 1fr) minmax(260px, 340px);
+  gap: 12px;
+  min-height: 0;
+}
+
+.table-area {
+  position: relative;
+  overflow: hidden;
+  border-radius: 8px;
+  min-height: 490px;
+  padding: 14px;
+}
+
+.table-area.is-dense-board {
+  min-height: min(82vh, 820px);
+  overflow: auto;
+}
+
+.board {
+  position: relative;
+  min-height: 450px;
+  height: 100%;
+  border-radius: 8px;
+  overflow: hidden;
+  background:
+    linear-gradient(90deg, rgba(34, 103, 181, 0.10), transparent 22%, transparent 78%, rgba(201, 72, 66, 0.10)),
+    radial-gradient(circle at 40% 34%, rgba(215, 168, 36, 0.18), transparent 18%),
+    radial-gradient(circle at 60% 66%, rgba(47, 143, 105, 0.15), transparent 18%),
+    #fdfaf1;
+}
+
+.board.is-dense {
+  width: min(100%, 510px);
+  height: min(84vh, 880px);
+  min-height: 740px;
+  margin: 0 auto;
+  border: 3px solid rgba(10, 17, 24, 0.70);
+  box-shadow: inset 0 0 0 3px rgba(255, 247, 221, 0.08), 0 18px 44px rgba(6, 13, 20, 0.24);
+  background:
+    radial-gradient(circle at 10% 18%, rgba(255, 164, 54, 0.28), transparent 11%),
+    radial-gradient(circle at 90% 19%, rgba(255, 164, 54, 0.25), transparent 11%),
+    radial-gradient(circle at 10% 79%, rgba(255, 164, 54, 0.23), transparent 11%),
+    radial-gradient(circle at 90% 79%, rgba(255, 164, 54, 0.23), transparent 11%),
+    radial-gradient(ellipse at 51% 48%, rgba(110, 165, 82, 0.42), transparent 54%),
+    repeating-linear-gradient(100deg, rgba(255, 253, 248, 0.035) 0 1px, transparent 1px 5px),
+    linear-gradient(90deg, rgba(14, 33, 31, 0.78) 0 10%, transparent 10% 90%, rgba(13, 31, 32, 0.78) 90% 100%),
+    linear-gradient(180deg, #254b2e 0%, #36713c 42%, #2b6435 70%, #214628 100%);
+}
+
+.cemetery-map-art {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+}
+
+.cemetery-base-pads {
+  position: absolute;
+  inset: 0;
+  z-index: 3;
+  pointer-events: none;
+}
+
+.cemetery-forest {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 13%;
+  background:
+    radial-gradient(ellipse at 36% 14%, rgba(98, 60, 42, 0.65), transparent 10%),
+    repeating-linear-gradient(145deg, rgba(8, 20, 26, 0.88) 0 10px, rgba(26, 62, 53, 0.92) 10px 20px, rgba(11, 27, 31, 0.88) 20px 34px);
+  opacity: 0.94;
+}
+
+.cemetery-forest.left {
+  left: 0;
+  clip-path: polygon(0 0, 100% 0, 78% 18%, 96% 34%, 70% 50%, 92% 69%, 74% 100%, 0 100%);
+}
+
+.cemetery-forest.right {
+  right: 0;
+  clip-path: polygon(22% 0, 100% 0, 100% 100%, 28% 100%, 8% 78%, 30% 58%, 5% 39%, 32% 18%);
+}
+
+.cemetery-fence {
+  position: absolute;
+  left: 12%;
+  right: 12%;
+  height: 18px;
+  background:
+    linear-gradient(90deg, rgba(110, 82, 68, 0.0) 0 4px, rgba(110, 82, 68, 0.94) 4px 7px, rgba(110, 82, 68, 0.0) 7px 14px),
+    linear-gradient(180deg, transparent 6px, rgba(68, 46, 43, 0.92) 6px 10px, transparent 10px);
+  background-size: 14px 100%, 100% 100%;
+  opacity: 0.86;
+}
+
+.cemetery-fence.top {
+  top: 16px;
+}
+
+.cemetery-fence.bottom {
+  bottom: 16px;
+}
+
+.cemetery-gate {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 55px;
+  height: 28px;
+  border: 3px solid rgba(21, 27, 39, 0.75);
+  border-radius: 6px 6px 0 0;
+  background: #31466d;
+  box-shadow: inset 0 -10px rgba(16, 21, 34, 0.22);
+}
+
+.cemetery-gate.blue {
+  top: 3px;
+  background: #2b4e91;
+}
+
+.cemetery-gate.red {
+  bottom: 3px;
+  background: #a63a35;
+}
+
+.cemetery-mausoleum {
+  position: absolute;
+  right: 7%;
+  top: 5%;
+  width: 70px;
+  height: 64px;
+  border: 3px solid rgba(190, 204, 224, 0.38);
+  border-radius: 7px 7px 4px 4px;
+  background:
+    radial-gradient(circle at 50% 74%, rgba(92, 185, 216, 0.38) 0 13px, transparent 14px),
+    repeating-linear-gradient(90deg, rgba(35, 52, 86, 0.78) 0 8px, rgba(49, 70, 110, 0.90) 8px 16px);
+  clip-path: polygon(50% 0, 100% 22%, 100% 100%, 0 100%, 0 22%);
+  box-shadow: 0 8px 14px rgba(6, 13, 20, 0.38);
+}
+
+.cemetery-red-fort {
+  position: absolute;
+  left: 6%;
+  bottom: 4%;
+  width: 64px;
+  height: 58px;
+  border: 3px solid rgba(28, 29, 36, 0.76);
+  border-radius: 8px 8px 4px 4px;
+  background:
+    linear-gradient(180deg, rgba(255, 242, 218, 0.72) 0 7px, transparent 8px),
+    repeating-linear-gradient(90deg, #b7433d 0 11px, #7d2525 11px 20px);
+  clip-path: polygon(50% 0, 96% 17%, 100% 100%, 0 100%, 4% 17%);
+  box-shadow: 0 8px 14px rgba(6, 13, 20, 0.40);
+}
+
+.cemetery-root {
+  position: absolute;
+  width: 100px;
+  height: 86px;
+  border: 0 solid rgba(119, 73, 42, 0.82);
+  opacity: 0.82;
+}
+
+.cemetery-root.root-nw {
+  left: 0;
+  top: 0;
+  border-left-width: 8px;
+  border-bottom-width: 5px;
+  border-radius: 0 0 62px 0;
+  transform: rotate(-11deg);
+}
+
+.cemetery-root.root-se {
+  right: -3px;
+  bottom: 3%;
+  border-right-width: 8px;
+  border-top-width: 5px;
+  border-radius: 62px 0 0 0;
+  transform: rotate(-9deg);
+}
+
+.cemetery-pumpkin {
+  position: absolute;
+  width: 68px;
+  height: 68px;
+  border-radius: 50%;
+  background:
+    radial-gradient(circle at 50% 51%, #fff4ae 0 10px, #f5a83b 11px 18px, #d76323 19px),
+    linear-gradient(90deg, rgba(119, 51, 18, 0.32), transparent 28% 72%, rgba(119, 51, 18, 0.32));
+  border: 3px solid rgba(96, 43, 22, 0.62);
+  box-shadow: 0 0 22px rgba(247, 143, 41, 0.78), 0 8px 12px rgba(61, 24, 8, 0.30);
+}
+
+.cemetery-pumpkin.nw {
+  left: 8%;
+  top: 18%;
+}
+
+.cemetery-pumpkin.ne {
+  right: 8%;
+  top: 18%;
+}
+
+.cemetery-pumpkin.sw {
+  left: 8%;
+  bottom: 18%;
+}
+
+.cemetery-pumpkin.se {
+  right: 8%;
+  bottom: 18%;
+}
+
+.cemetery-visual-region-hint {
+  position: absolute;
+  transform: translate(-50%, -50%) rotate(var(--rot, 0deg));
+  border: 1px solid rgba(233, 184, 91, 0.26);
+  border-radius: 48%;
+  background:
+    radial-gradient(ellipse at 50% 50%, rgba(235, 190, 92, 0.13), transparent 61%),
+    linear-gradient(90deg, rgba(105, 77, 63, 0.13), transparent 28% 72%, rgba(105, 77, 63, 0.13));
+  box-shadow: inset 0 0 20px rgba(23, 61, 31, 0.36);
+}
+
+.cemetery-visual-medal-hint {
+  position: absolute;
+  width: 14px;
+  height: 14px;
+  transform: translate(-50%, -50%);
+  border-radius: 50%;
+  border: 1px solid rgba(255, 245, 181, 0.82);
+  background:
+    radial-gradient(circle at 38% 32%, #fff7ba 0 2px, transparent 3px),
+    radial-gradient(circle, #f4ba36 0 4px, #9d6f1b 6px);
+  box-shadow: 0 0 5px rgba(249, 189, 52, 0.50), 0 1px 2px rgba(24, 13, 6, 0.45);
+  display: grid;
+  place-items: center;
+  font-size: 0.54rem;
+  font-weight: 800;
+  color: #49350c;
+  line-height: 1;
+  pointer-events: auto;
+}
+
+.cemetery-visual-grave-hint {
+  position: absolute;
+  width: 16px;
+  height: 20px;
+  transform: translate(-50%, -50%) rotate(var(--rot, 0deg));
+  border: 1px solid rgba(56, 65, 78, 0.42);
+  border-radius: 9px 9px 4px 4px;
+  background:
+    linear-gradient(135deg, rgba(255, 255, 255, 0.34), transparent 48%),
+    #84909b;
+  opacity: 0.82;
+  box-shadow: 0 3px 4px rgba(4, 9, 16, 0.25);
+}
+
+.cemetery-visual-grave-hint.is-round {
+  width: 17px;
+  height: 17px;
+  border-radius: 50%;
+}
+
+.cemetery-visual-grave-hint.is-coffin {
+  width: 21px;
+  height: 13px;
+  border-radius: 6px;
+  background:
+    linear-gradient(90deg, rgba(90, 51, 36, 0.34) 0 18%, transparent 18% 82%, rgba(90, 51, 36, 0.34) 82%),
+    #a18672;
+}
+
+.cemetery-base-pad {
+  position: absolute;
+  width: 24px;
+  height: 26px;
+  transform: translate(-50%, -50%) rotate(-3deg);
+  border: 2px solid rgba(67, 76, 86, 0.52);
+  border-radius: 5px;
+  background:
+    linear-gradient(135deg, rgba(255, 255, 255, 0.42), transparent 48%),
+    #aab4bd;
+  box-shadow: 0 4px 5px rgba(4, 9, 16, 0.34);
+}
+
+.cemetery-base-pad.is-plaza {
+  width: 58px;
+  height: 58px;
+  border-width: 2px;
+  border-radius: 8px;
+  background:
+    linear-gradient(35deg, transparent 0 21%, rgba(74, 86, 96, 0.32) 22% 24%, transparent 25% 100%),
+    linear-gradient(122deg, transparent 0 32%, rgba(74, 86, 96, 0.26) 33% 35%, transparent 36% 100%),
+    radial-gradient(circle at 22% 24%, rgba(255, 255, 255, 0.44), transparent 20%),
+    #b9c3ca;
+  box-shadow: inset 0 0 0 2px rgba(255, 255, 255, 0.18), 0 6px 9px rgba(4, 9, 16, 0.36);
+}
+
+.cemetery-base-pad.is-coffin {
+  width: 35px;
+  height: 23px;
+  border-radius: 8px;
+  background:
+    linear-gradient(90deg, rgba(73, 38, 26, 0.42) 0 18%, transparent 18% 82%, rgba(73, 38, 26, 0.42) 82%),
+    #b88d67;
+}
+
+.cemetery-base-pad.is-lantern {
+  background:
+    radial-gradient(circle at 50% 45%, rgba(255, 233, 147, 0.95) 0 5px, transparent 6px),
+    #8e99a5;
+  box-shadow: 0 0 9px rgba(247, 143, 41, 0.65), 0 4px 5px rgba(4, 9, 16, 0.34);
+}
+
+.cemetery-base-pad.is-vault {
+  width: 28px;
+  height: 26px;
+  border-radius: 13px 13px 5px 5px;
+}
+
+.cemetery-base-pad.is-round {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+}
+
+.cemetery-base-pad.is-tilted {
+  transform: translate(-50%, -50%) rotate(-18deg);
+}
+
+.cemetery-base-pad.is-double {
+  width: 34px;
+  background:
+    linear-gradient(90deg, transparent 46%, rgba(66, 75, 84, 0.45) 47% 53%, transparent 54%),
+    linear-gradient(135deg, rgba(255, 255, 255, 0.42), transparent 48%),
+    #aab4bd;
+}
+
+.cemetery-base-pad.is-special {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(255, 245, 177, 0.94) 0 8px, #e27727 9px 16px, #873a1c 17px);
+  box-shadow: 0 0 17px rgba(248, 147, 41, 0.74), 0 5px 7px rgba(4, 9, 16, 0.36);
+}
+
+.cemetery-base-pad.is-hq {
+  width: 62px;
+  height: 54px;
+  border-radius: 6px 6px 3px 3px;
+  clip-path: polygon(50% 0, 100% 24%, 92% 100%, 8% 100%, 0 24%);
+}
+
+.cemetery-base-pad.is-hq.owner-blue {
+  background: #506797;
+}
+
+.cemetery-base-pad.is-hq.owner-red {
+  background: #a8453f;
+}
+
+.board-svg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 2;
+}
+
+.path-line {
+  stroke: #9aa7b7;
+  stroke-width: 5;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  fill: none;
+}
+
+.board.is-dense .path-line {
+  filter: drop-shadow(0 1px 1px rgba(19, 14, 15, 0.72));
+}
+
+.board.is-dense .path-underlay {
+  stroke: rgba(78, 58, 62, 0.94);
+  stroke-width: 2.9;
+  stroke-dasharray: none;
+}
+
+.board.is-dense .path-stones {
+  stroke: rgba(202, 180, 166, 0.94);
+  stroke-width: 1.65;
+  stroke-dasharray: 0.52 0.62;
+}
+
+.region-shape {
+  fill: rgba(255, 255, 255, 0.38);
+  stroke: rgba(27, 36, 48, 0.16);
+  stroke-width: 2;
+}
+
+.board.is-dense .region-shape {
+  fill: rgba(93, 152, 75, 0.08);
+  stroke: rgba(236, 192, 87, 0.30);
+  stroke-width: 0.26;
+}
+
+.region-label {
+  position: absolute;
+  z-index: 4;
+  transform: translate(-50%, -50%);
+  border: 1px dashed rgba(27, 36, 48, 0.2);
+  background: rgba(255, 255, 255, 0.68);
+  border-radius: 8px;
+  padding: 7px 9px;
+  min-width: 92px;
+  text-align: center;
+  font-size: 0.78rem;
+  color: var(--muted);
+}
+
+.region-label strong {
+  display: block;
+  color: var(--ink);
+}
+
+.region-label.is-dense {
+  min-width: 50px;
+  max-width: 80px;
+  padding: 3px 4px;
+  border-color: rgba(244, 213, 139, 0.26);
+  background: rgba(13, 44, 26, 0.46);
+  color: rgba(255, 247, 221, 0.78);
+  font-size: 0.54rem;
+  line-height: 1.1;
+  pointer-events: none;
+}
+
+.region-label.is-dense strong {
+  color: rgba(255, 247, 221, 0.92);
+  font-weight: 600;
+}
+
+.region-label.is-dense span {
+  display: none;
+}
+
+.uncertainty-band {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  z-index: 2;
+  pointer-events: none;
+}
+
+.uncertainty-band.left {
+  left: 0;
+  width: 28%;
+  border-right: 1px solid rgba(237, 199, 86, 0.45);
+  background: linear-gradient(90deg, rgba(239, 203, 95, 0.13), rgba(239, 203, 95, 0.04));
+}
+
+.uncertainty-band.right {
+  right: 0;
+  width: 9%;
+  border-left: 1px solid rgba(39, 28, 33, 0.42);
+  background: linear-gradient(90deg, rgba(9, 16, 22, 0.06), rgba(9, 16, 22, 0.22));
+}
+
+.dense-board-status {
+  pointer-events: none;
+  position: absolute;
+  z-index: 8;
+  left: 8px;
+  top: 8px;
+  display: grid;
+  gap: 2px;
+  max-width: 190px;
+  padding: 6px 8px;
+  border: 1px solid rgba(255, 253, 248, 0.28);
+  background: rgba(8, 29, 17, 0.70);
+  color: rgba(255, 253, 248, 0.92);
+  border-radius: 6px;
+  font-size: 0.62rem;
+  line-height: 1.2;
+}
+
+.dense-board-status strong {
+  font-size: 0.68rem;
+}
+
+.node {
+  position: absolute;
+  transform: translate(-50%, -50%);
+  left: var(--node-x);
+  top: var(--node-y);
+  width: var(--node-width, 112px);
+  min-height: var(--node-min-height, 96px);
+  border: 2px solid #354155;
+  border-radius: 8px;
+  background: #fffdf8;
+  color: var(--ink);
+  padding: 8px;
+  cursor: default;
+  box-shadow: 0 6px 14px rgba(27, 36, 48, 0.15);
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+  gap: 6px;
+}
+
+/* Compact nodes are transparent click overlays above the .cemetery-base-pad decoration */
+.node.is-compact {
+  z-index: 10;
+  width: 28px;
+  min-height: 28px;
+  height: 28px;
+  padding: 0 !important;
+  border: none !important;
+  border-radius: 8px; /* Match normal base pad radius */
+  display: grid;
+  place-items: center;
+  background: rgba(255, 255, 255, 0.001) !important; /* Fix browser click quirks */
+  box-shadow: none !important;
+  font-size: 0;
+  overflow: visible;
+  cursor: pointer;
+  color: transparent !important;
+}
+
+.node.is-compact:disabled,
+.node.is-compact[aria-disabled="true"] {
+  opacity: 1;
+}
+
+.node.is-compact.is-hq {
+  width: 62px;
+  height: 54px;
+  min-height: 54px;
+  border-radius: 6px 6px 3px 3px; /* Match HQ pad radius */
+  background: rgba(255, 255, 255, 0.001) !important;
+  border: none !important;
+  box-shadow: none !important;
+  clip-path: none;
+  padding: 0;
+}
+
+/* Special base: .cemetery-base-pad renders the orange circle, this is just a transparent click overlay */
+.node.is-compact.is-special {
+  width: 44px; /* Match special base pad size exactly */
+  height: 44px;
+  min-height: 44px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.001) !important;
+  border: none !important;
+  box-shadow: none !important;
+}
+
+/* Match layout shapes of the cemetery board base pads */
+.node.is-compact.is-plaza {
+  width: 58px;
+  height: 58px;
+  min-height: 58px;
+  border-radius: 8px;
+  transform: translate(-50%, -50%) rotate(-3deg);
+}
+
+.node.is-compact.is-coffin {
+  width: 35px;
+  height: 23px;
+  min-height: 23px;
+  border-radius: 8px;
+  transform: translate(-50%, -50%) rotate(-3deg);
+}
+
+.node.is-compact.is-vault {
+  width: 28px;
+  height: 26px;
+  min-height: 26px;
+  border-radius: 13px 13px 5px 5px;
+  transform: translate(-50%, -50%) rotate(-3deg);
+}
+
+.node.is-compact.is-round {
+  width: 28px;
+  height: 28px;
+  min-height: 28px;
+  border-radius: 50%;
+}
+
+.node.is-compact.is-double {
+  width: 34px;
+  height: 26px;
+  min-height: 26px;
+  border-radius: 5px;
+  transform: translate(-50%, -50%) rotate(-3deg);
+}
+
+.node.is-compact.is-grave,
+.node.is-compact.is-lantern {
+  width: 24px;
+  height: 26px;
+  min-height: 26px;
+  border-radius: 5px;
+  transform: translate(-50%, -50%) rotate(-3deg);
+}
+
+.node.is-compact.is-tilted {
+  width: 24px;
+  height: 26px;
+  min-height: 26px;
+  border-radius: 5px;
+  transform: translate(-50%, -50%) rotate(-18deg);
+}
+
+.node.is-compact.is-hq.owner-blue {
+  background: var(--blue);
+  border-color: #e8f2ff;
+}
+
+.node.is-compact.is-hq.owner-red {
+  background: var(--red);
+  border-color: #fff0ed;
+}
+
+.node.is-compact.occupied-blue {
+  box-shadow: 0 0 0 3px rgba(34, 103, 181, 0.92) !important;
+}
+
+.node.is-compact.occupied-red {
+  box-shadow: 0 0 0 3px rgba(201, 72, 66, 0.92) !important;
+}
+
+.node.is-compact.is-legal {
+  outline: 3px solid rgba(112, 219, 128, 0.72);
+  cursor: pointer;
+}
+
+.node.is-compact[data-placement-legal="false"] {
+  box-shadow: 0 0 0 2px rgba(201, 72, 66, 0.18), 0 1px 3px rgba(5, 13, 22, 0.50);
+}
+
+.node-inspected {
+  position: absolute;
+  left: 50%;
+  top: -16px;
+  transform: translateX(-50%);
+  width: 15px;
+  height: 15px;
+  border-radius: 999px;
+  display: grid;
+  place-items: center;
+  background: #fffdf8;
+  color: var(--ink);
+  border: 1px solid rgba(27, 36, 48, 0.30);
+  font-size: 0.62rem;
+  font-weight: 800;
+}
+
+.compact-node-label,
+.compact-troop,
+.compact-stack {
+  pointer-events: none;
+}
+
+.compact-node-label {
+  position: absolute;
+  left: 50%;
+  top: 100%;
+  transform: translate(-50%, 2px);
+  color: rgba(255, 253, 248, 0.88);
+  font-size: 0.46rem;
+  line-height: 1;
+  white-space: nowrap;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.80);
+  opacity: 0;
+}
+
+.node.is-compact.is-hq .compact-node-label,
+.node.is-compact.is-special .compact-node-label {
+  opacity: 0.9;
+  font-size: 0.52rem;
+  font-weight: 700;
+}
+
+.node.is-compact:hover .compact-node-label,
+.node.is-compact:focus-visible .compact-node-label {
+  opacity: 1;
+}
+
+.compact-troop {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  border: 2px solid rgba(255, 253, 248, 0.92);
+  border-radius: inherit; /* Inherit rounded corners from button node */
+  display: grid;
+  grid-template-columns: 1fr;
+  place-items: center;
+  color: #fff;
+  background-color: #354155;
+  box-shadow: 0 2px 5px rgba(5, 13, 22, 0.42);
+  font-weight: 800;
+  letter-spacing: 0;
+  line-height: 1;
+  box-sizing: border-box;
+}
+
+.compact-troop.owner-blue {
+  background-color: #2267b5;
+}
+
+.compact-troop.owner-red {
+  background-color: #c94842;
+}
+
+.compact-force {
+  position: absolute;
+  left: -6px;
+  top: -7px;
+  min-width: 14px;
+  height: 14px;
+  border: 1px solid rgba(27, 36, 48, 0.35);
+  border-radius: 999px;
+  display: grid;
+  place-items: center;
+  background: #fffdf8;
+  color: var(--ink);
+  font-size: 0.48rem;
+}
+
+.compact-mark {
+  font-size: 0.44rem;
+}
+
+.compact-stack {
+  position: absolute;
+  right: -8px;
+  top: -8px;
+  min-width: 15px;
+  height: 15px;
+  border-radius: 999px;
+  background: #fffdf8;
+  color: var(--ink);
+  border: 1px solid rgba(27, 36, 48, 0.28);
+  display: grid;
+  place-items: center;
+  font-size: 0.48rem;
+  font-weight: 700;
+}
+
+.node-popover {
+  position: absolute;
+  left: 50%;
+  bottom: calc(100% + 10px);
+  transform: translateX(-50%);
+  z-index: 50;
+  width: 180px;
+  display: none;
+  gap: 3px;
+  padding: 7px 8px;
+  border: 1px solid rgba(255, 253, 248, 0.45);
+  border-radius: 6px;
+  background: rgba(12, 26, 18, 0.94);
+  color: #fffdf8;
+  font-size: 0.68rem;
+  line-height: 1.18;
+  text-align: left;
+  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.32);
+}
+
+.node-popover strong,
+.node-popover span {
+  display: block;
+}
+
+.node.is-compact:hover,
+.node.is-compact:focus-visible {
+  z-index: 60;
+}
+
+.node.is-compact:hover .node-popover,
+.node.is-compact:focus-visible .node-popover {
+  display: grid;
+}
+
+.medal-marker {
+  position: absolute;
+  z-index: 6;
+  transform: translate(-50%, -50%);
+  width: 17px;
+  height: 17px;
+  border-radius: 999px;
+  border: 2px solid #fff2c2;
+  background: #f3b629;
+  color: #49350c;
+  display: grid;
+  place-items: center;
+  font-size: 0.58rem;
+  font-weight: 800;
+  box-shadow: 0 1px 5px rgba(0, 0, 0, 0.35);
+}
+
+.medal-marker.claimed-blue {
+  display: none;
+}
+
+.medal-marker.claimed-red {
+  display: none;
+}
+
+.cemetery-board-legend,
+.cemetery-board-detail {
+  position: absolute;
+  z-index: 9;
+  border: 1px solid rgba(255, 253, 248, 0.30);
+  background: rgba(8, 29, 17, 0.76);
+  color: rgba(255, 253, 248, 0.94);
+  box-shadow: 0 8px 18px rgba(5, 13, 22, 0.26);
+  pointer-events: none;
+}
+
+.cemetery-board-legend {
+  left: 50%;
+  bottom: 8px;
+  transform: translateX(-50%);
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 7px 10px;
+  width: calc(100% - 24px);
+  padding: 6px 8px;
+  border-radius: 6px;
+  font-size: 0.56rem;
+  line-height: 1.1;
+}
+
+.cemetery-board-legend span {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  white-space: nowrap;
+}
+
+.cemetery-board-legend i {
+  width: 11px;
+  height: 11px;
+  flex: 0 0 11px;
+  border: 1px solid rgba(255, 253, 248, 0.72);
+}
+
+.legend-stone {
+  border-radius: 3px;
+  background: #b9c4cd;
+}
+
+.legend-special {
+  border-radius: 50%;
+  background: #f2992e;
+}
+
+.legend-hq {
+  background: var(--blue);
+  clip-path: polygon(50% 0, 100% 28%, 92% 100%, 8% 100%, 0 28%);
+}
+
+.legend-medal {
+  border-radius: 50%;
+  background: #f3b629;
+}
+
+.legend-legal {
+  border-radius: 3px;
+  background: #b9c4cd;
+  box-shadow: 0 0 0 3px rgba(112, 219, 128, 0.52);
+}
+
+.cemetery-board-detail {
+  right: 8px;
+  top: 84px;
+  display: grid;
+  gap: 3px;
+  width: min(155px, calc(100% - 24px));
+  padding: 7px 8px;
+  border-radius: 7px;
+  font-size: 0.58rem;
+  line-height: 1.16;
+}
+
+.cemetery-board-detail strong {
+  font-size: 0.64rem;
+}
+
+.cemetery-board-detail.is-legal {
+  border-color: rgba(112, 219, 128, 0.72);
+}
+
+.cemetery-board-detail.is-blocked {
+  border-color: rgba(237, 113, 102, 0.70);
+}
+
+.node.is-hq {
+  border-width: 3px;
+  clip-path: polygon(50% 0%, 100% 28%, 92% 100%, 8% 100%, 0 28%);
+  padding-top: 14px;
+}
+
+.node.owner-blue,
+.score-pill.blue {
+  border-color: var(--blue);
+}
+
+.node.owner-red,
+.score-pill.red {
+  border-color: var(--red);
+}
+
+.node.is-legal {
+  outline: 4px solid rgba(47, 143, 105, 0.35);
+  cursor: pointer;
+}
+
+.node.is-legal:hover,
+.support-card.is-selected {
+  box-shadow: 0 0 0 4px rgba(47, 143, 105, 0.22), var(--shadow);
+}
+
+.node-title {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 4px;
+  font-size: 0.78rem;
+  font-weight: 700;
+}
+
+.node-kind {
+  color: var(--muted);
+  font-size: 0.7rem;
+  text-transform: uppercase;
+}
+
+.troop-chip {
+  border-radius: 8px;
+  border: 1px solid var(--line);
+  padding: 3px;
+  min-height: 46px;
+  background: #ffffff;
+  display: grid;
+}
+
+.troop-chip.blue {
+  border-left: 5px solid var(--blue);
+}
+
+.troop-chip.red {
+  border-left: 5px solid var(--red);
+}
+
+.troop-chip.hidden {
+  border-style: dashed;
+  color: var(--muted);
+  background: repeating-linear-gradient(135deg, #fff, #fff 6px, #f0f4f8 6px, #f0f4f8 12px);
+}
+
+.troop-tile {
+  --tile-accent: #6a7788;
+  min-width: 0;
+  width: 100%;
+  min-height: 72px;
+  border: 1px solid rgba(27, 36, 48, 0.16);
+  border-radius: 8px;
+  background:
+    linear-gradient(135deg, rgba(255, 255, 255, 0.92), rgba(255, 255, 255, 0.72)),
+    linear-gradient(135deg, color-mix(in srgb, var(--tile-accent) 16%, #ffffff), #ffffff);
+  display: grid;
+  grid-template-columns: 46px minmax(0, 1fr);
+  grid-template-rows: 1fr auto;
+  gap: 6px 8px;
+  align-items: center;
+  padding: 7px;
+  color: var(--ink);
+}
+
+.troop-tile.type-kwak {
+  --tile-accent: #d7a824;
+}
+
+.troop-tile.type-skully {
+  --tile-accent: #59637a;
+}
+
+.troop-tile.type-captaine {
+  --tile-accent: #2d72b8;
+}
+
+.troop-tile.type-mastok {
+  --tile-accent: #2f8f69;
+}
+
+.troop-tile.type-crochet {
+  --tile-accent: #8a55b5;
+}
+
+.troop-tile.type-xb42 {
+  --tile-accent: #6c7480;
+}
+
+.troop-tile.type-star {
+  --tile-accent: #d766a9;
+}
+
+.troop-tile.type-roxy {
+  --tile-accent: #d96b27;
+}
+
+.troop-tile.owner-blue {
+  border-left: 5px solid var(--blue);
+}
+
+.troop-tile.owner-red {
+  border-left: 5px solid var(--red);
+}
+
+.troop-tile.state-playable {
+  box-shadow: inset 0 0 0 2px rgba(47, 143, 105, 0.26);
+}
+
+.troop-tile.state-selected {
+  box-shadow: inset 0 0 0 2px rgba(215, 168, 36, 0.50);
+}
+
+.troop-tile.state-blocked,
+.troop-tile.is-hidden {
+  color: #687486;
+  background:
+    repeating-linear-gradient(135deg, rgba(247, 249, 252, 0.96), rgba(247, 249, 252, 0.96) 8px, rgba(232, 237, 244, 0.96) 8px, rgba(232, 237, 244, 0.96) 16px);
+}
+
+.troop-art {
+  position: relative;
+  width: 42px;
+  height: 42px;
+  border: 2px solid color-mix(in srgb, var(--tile-accent) 62%, #1b2430);
+  border-radius: 8px;
+  display: grid;
+  place-items: center;
+  background:
+    radial-gradient(circle at 70% 26%, rgba(255, 255, 255, 0.78), transparent 18px),
+    color-mix(in srgb, var(--tile-accent) 76%, #ffffff);
+  color: #ffffff;
+  box-shadow: inset 0 -7px 0 rgba(27, 36, 48, 0.10);
+}
+
+.troop-art::before {
+  content: attr(data-mark);
+  font-size: 0.74rem;
+  font-weight: 900;
+  text-shadow: 0 1px 2px rgba(27, 36, 48, 0.46);
+}
+
+.troop-art::after {
+  content: "";
+  position: absolute;
+  right: 5px;
+  bottom: 5px;
+  width: 11px;
+  height: 11px;
+  border-radius: 3px;
+  background: rgba(255, 253, 248, 0.72);
+}
+
+.troop-art.theme-duck::after,
+.troop-art.theme-star::after {
+  border-radius: 999px 999px 999px 3px;
+}
+
+.troop-art.theme-skull::after {
+  border-radius: 999px;
+  box-shadow: -6px 0 0 rgba(255, 253, 248, 0.52);
+}
+
+.troop-art.theme-captain::after,
+.troop-art.theme-hook::after {
+  width: 16px;
+  height: 5px;
+  border-radius: 999px;
+}
+
+.troop-art.theme-heavy::after,
+.troop-art.theme-robot::after {
+  width: 14px;
+  height: 14px;
+}
+
+.troop-art.theme-dino::after {
+  width: 16px;
+  height: 10px;
+  border-radius: 999px 4px 4px 999px;
+}
+
+.troop-art.is-hidden {
+  border-style: dashed;
+  background: #eef2f7;
+  color: #7a8494;
+}
+
+.troop-force {
+  position: absolute;
+  left: -7px;
+  top: -8px;
+  min-width: 20px;
+  height: 20px;
+  border: 1px solid rgba(27, 36, 48, 0.28);
+  border-radius: 999px;
+  display: grid;
+  place-items: center;
+  background: #fffdf8;
+  color: var(--ink);
+  font-size: 0.72rem;
+  font-weight: 900;
+}
+
+.troop-info {
+  min-width: 0;
+  display: grid;
+  gap: 2px;
+}
+
+.troop-info strong,
+.troop-role,
+.troop-effect,
+.troop-state,
+.troop-reason {
+  overflow-wrap: anywhere;
+}
+
+.troop-info strong {
+  font-size: 0.88rem;
+  line-height: 1.05;
+}
+
+.troop-role,
+.troop-effect {
+  display: block;
+  color: var(--muted);
+  font-size: 0.7rem;
+  line-height: 1.1;
+}
+
+.troop-effect {
+  color: color-mix(in srgb, var(--tile-accent) 64%, #1b2430);
+  font-weight: 700;
+}
+
+.troop-state {
+  grid-column: 1 / -1;
+  justify-self: start;
+  border: 1px solid color-mix(in srgb, var(--tile-accent) 32%, #d4dbe6);
+  border-radius: 999px;
+  padding: 2px 7px;
+  background: #ffffff;
+  color: var(--muted);
+  font-size: 0.64rem;
+  font-weight: 800;
+  text-transform: uppercase;
+}
+
+.troop-reason {
+  grid-column: 1 / -1;
+  display: block;
+  border-left: 3px solid color-mix(in srgb, var(--tile-accent) 44%, #d4dbe6);
+  padding-left: 6px;
+  color: #4e5868;
+  font-size: 0.66rem;
+  line-height: 1.1;
+  font-weight: 700;
+}
+
+.troop-tile.variant-chip {
+  min-height: 42px;
+  grid-template-columns: 34px minmax(0, 1fr);
+  gap: 5px;
+  padding: 4px;
+}
+
+.troop-tile.variant-chip .troop-art {
+  width: 30px;
+  height: 30px;
+}
+
+.troop-tile.variant-chip .troop-force,
+.troop-tile.variant-chip .troop-role,
+.troop-tile.variant-chip .troop-state,
+.troop-tile.variant-chip .troop-reason {
+  display: none;
+}
+
+.troop-tile.variant-chip .troop-info strong {
+  font-size: 0.72rem;
+}
+
+.troop-tile.variant-chip .troop-effect {
+  font-size: 0.58rem;
+}
+
+.stack-count {
+  color: var(--muted);
+  font-size: 0.72rem;
+}
+
+.side-panel {
+  border-radius: 8px;
+  padding: 12px;
+  display: grid;
+  gap: 12px;
+  align-content: start;
+  overflow: auto;
+}
+
+.decision-panel {
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  padding: 12px;
+  background: #ffffff;
+  display: grid;
+  gap: 10px;
+}
+
+.decision-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px 10px;
+  color: var(--muted);
+  font-size: 0.78rem;
+}
+
+.decision-panel h2 {
+  margin: 0;
+  font-size: 1rem;
+  line-height: 1.25;
+}
+
+.decision-panel p {
+  margin: 0;
+  color: var(--muted);
+  font-size: 0.86rem;
+}
+
+.decision-options {
+  display: grid;
+  gap: 8px;
+}
+
+.decision-option,
+.placement-preview-panel,
+.effect-choice-panel,
+.decision-selected {
+  border: 1px solid rgba(92, 103, 120, 0.24);
+  border-radius: 8px;
+  padding: 8px;
+  background: #fbfcff;
+  display: grid;
+  gap: 4px;
+}
+
+.decision-option.is-available,
+.placement-preview-panel.is-legal {
+  border-color: rgba(47, 143, 105, 0.42);
+  background: #f0fbf5;
+}
+
+.decision-option.is-blocked,
+.placement-preview-panel.is-blocked {
+  border-color: rgba(201, 72, 66, 0.38);
+  background: #fff4f3;
+}
+
+.decision-option strong,
+.placement-preview-panel strong,
+.effect-choice-panel strong,
+.decision-selected strong {
+  display: block;
+  font-size: 0.9rem;
+}
+
+.decision-option span,
+.placement-preview-panel span,
+.effect-choice-panel span,
+.decision-selected span,
+.decision-panel [data-testid="prompt"],
+.decision-panel [data-testid="notice"] {
+  display: block;
+  margin-top: 4px;
+  color: var(--muted);
+  font-size: 0.84rem;
+}
+
+.effect-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.control-strip {
+  border-radius: 8px;
+  padding: 10px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.command-button {
+  border: 1px solid #2d3848;
+  border-radius: 8px;
+  background: #ffffff;
+  color: var(--ink);
+  padding: 9px 12px;
+  min-height: 40px;
+  cursor: pointer;
+}
+
+.command-button.primary {
+  background: var(--green);
+  color: #ffffff;
+  border-color: var(--green);
+}
+
+.command-button:disabled {
+  cursor: not-allowed;
+  opacity: 0.48;
+}
+
+.hand-area {
+  border-radius: 8px;
+  padding: 12px;
+  display: grid;
+  gap: 12px;
+}
+
+.hand-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(118px, 1fr));
+  gap: 8px;
+}
+
+.support-card {
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: #ffffff;
+  padding: 8px;
+  text-align: left;
+  min-height: 108px;
+}
+
+.support-card:not(:disabled) {
+  cursor: pointer;
+}
+
+.support-card:disabled {
+  cursor: not-allowed;
+  opacity: 1;
+}
+
+.support-card.state-blocked {
+  background: #f7f9fc;
+}
+
+.support-card.state-hidden {
+  background: #f3f5f8;
+}
+
+.tutorial-panel {
+  border: 2px solid rgba(47, 143, 105, 0.45);
+  border-radius: 8px;
+  padding: 12px;
+  background: #f7fff9;
+  display: grid;
+  gap: 10px;
+}
+
+.tutorial-heading {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+}
+
+.tutorial-heading span {
+  border: 1px solid rgba(47, 143, 105, 0.35);
+  border-radius: 999px;
+  padding: 3px 8px;
+  color: var(--green);
+  font-size: 0.76rem;
+  font-weight: 700;
+}
+
+.tutorial-panel p {
+  margin: 0;
+  color: var(--muted);
+  font-size: 0.84rem;
+}
+
+.tutorial-panel .tutorial-feedback {
+  min-height: 20px;
+  color: #7a4e00;
+  font-weight: 700;
+}
+
+.tutorial-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.tutorial-complete {
+  border-left: 4px solid var(--green);
+  padding-left: 8px;
+  color: var(--green) !important;
+  font-weight: 700;
+}
+
+.tutorial-highlight {
+  outline: 4px solid rgba(215, 168, 36, 0.56) !important;
+  box-shadow: 0 0 0 6px rgba(215, 168, 36, 0.18), var(--shadow);
+}
+
+.section-title {
+  margin: 0 0 8px;
+  font-size: 0.9rem;
+}
+
+.counter-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 8px;
+}
+
+.counter {
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  padding: 8px;
+  background: #fff;
+  font-size: 0.84rem;
+}
+
+.counter strong {
+  display: block;
+  font-size: 1.05rem;
+}
+
+.action-log {
+  border-radius: 8px;
+  padding: 10px;
+  max-height: 220px;
+  overflow: auto;
+}
+
+.action-log ol {
+  margin: 0;
+  padding-left: 20px;
+  display: grid;
+  gap: 6px;
+  font-size: 0.82rem;
+}
+
+.sr-status {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+@media (max-width: 840px) {
+  .main-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .top-bar {
+    grid-template-columns: 1fr;
+  }
+
+  .terrain-controls {
+    grid-template-columns: 96px 1fr;
+  }
+
+  .score-row {
+    justify-content: flex-start;
+  }
+
+  .table-area {
+    min-height: 520px;
+  }
+
+  .node {
+    --node-width: 96px;
+    --node-min-height: 88px;
+  }
+}
+
+@media (max-width: 480px) {
+  .app-shell {
+    padding: 8px;
+    gap: 8px;
+  }
+
+  .top-bar,
+  .table-area,
+  .hand-area,
+  .side-panel {
+    padding: 10px;
+  }
+
+  .score-pill {
+    min-width: 104px;
+    padding: 7px 9px;
+  }
+
+  .terrain-controls {
+    grid-template-columns: 1fr;
+  }
+
+  .terrain-status-card {
+    grid-template-columns: 1fr;
+  }
+
+  .table-area {
+    min-height: 610px;
+    overflow: hidden;
+  }
+
+  .board {
+    min-height: 590px;
+  }
+
+  .region-label {
+    display: none;
+  }
+
+  .path-line {
+    stroke-width: 3;
+    opacity: 0.42;
+  }
+
+  .node {
+    --node-width: 74px;
+    --node-min-height: 82px;
+    padding: 6px;
+    gap: 4px;
+    border-width: 2px;
+    box-shadow: 0 4px 10px rgba(27, 36, 48, 0.14);
+  }
+
+  .node.is-hq {
+    clip-path: none;
+    padding-top: 6px;
+  }
+
+  .node-title {
+    display: grid;
+    gap: 2px;
+    justify-items: center;
+    text-align: center;
+    font-size: 0.7rem;
+    line-height: 1.12;
+  }
+
+  .node-kind {
+    font-size: 0.6rem;
+  }
+
+  .troop-chip {
+    min-height: 34px;
+    padding: 4px;
+    font-size: 0.68rem;
+    line-height: 1.15;
+  }
+
+  .stack-count {
+    font-size: 0.66rem;
+    text-align: center;
+  }
+
+  [data-testid="board-node-blue-hq"] {
+    --node-x: 13% !important;
+    --node-y: 50% !important;
+  }
+
+  [data-testid="board-node-b1"] {
+    --node-x: 37% !important;
+    --node-y: 38% !important;
+  }
+
+  [data-testid="board-node-b2"] {
+    --node-x: 50% !important;
+    --node-y: 16% !important;
+  }
+
+  [data-testid="board-node-b3"] {
+    --node-x: 50% !important;
+    --node-y: 83% !important;
+  }
+
+  [data-testid="board-node-b4"] {
+    --node-x: 63% !important;
+    --node-y: 62% !important;
+  }
+
+  [data-testid="board-node-red-hq"] {
+    --node-x: 87% !important;
+    --node-y: 50% !important;
+  }
+}
+
+/* Characters Integration */
+.troop-art, .compact-troop {
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-blend-mode: normal;
+}
+
+.troop-tile.type-kwak .troop-art, .compact-troop.type-kwak { background-image: url('characters/kwak.png'); }
+.troop-tile.type-skully .troop-art, .compact-troop.type-skully { background-image: url('characters/skully.png'); }
+.troop-tile.type-captaine .troop-art, .compact-troop.type-captaine { background-image: url('characters/captaine.png'); }
+.troop-tile.type-mastok .troop-art, .compact-troop.type-mastok { background-image: url('characters/mastok.png'); }
+.troop-tile.type-crochet .troop-art, .compact-troop.type-crochet { background-image: url('characters/crochet.png'); }
+.troop-tile.type-xb42 .troop-art, .compact-troop.type-xb42 { background-image: url('characters/xb42.png'); }
+.troop-tile.type-star .troop-art, .compact-troop.type-star { background-image: url('characters/star.png'); }
+.troop-tile.type-roxy .troop-art, .compact-troop.type-roxy { background-image: url('characters/roxy.png'); }
+
+.troop-art::before {
+  display: none;
+}
+.compact-mark {
+  display: none;
+}
+
+/* Speculative placement highlights */
+.node.is-pending-placement {
+  outline: 3px dashed var(--warning, #f3b629) !important;
+  outline-offset: 2px;
+}
+.node.is-pending-placement .compact-troop,
+.node.is-pending-placement .troop-chip {
+  opacity: 0.65;
+}

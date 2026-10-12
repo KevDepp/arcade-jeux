@@ -41,28 +41,12 @@ const GAME_THEMES = {
     bannerSvg: `<svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg" style="width:70%;height:70%;opacity:0.75;"><path d="M 20 50 L 40 30 L 60 50 L 40 70 Z" fill="#8b5cf6" stroke="#fff" stroke-width="2" /><path d="M 45 70 L 65 50 L 85 70 L 65 90 Z" fill="#d946ef" stroke="#fff" stroke-width="2" /><path d="M 45 30 L 65 10 L 85 30 L 65 50 Z" fill="#3b82f6" stroke="#fff" stroke-width="2" /></svg>`
   },
   "puissance4": {
-    glowStart: "#eab308",
-    glowEnd: "#ef4444",
-    glowShadow: "rgba(239, 68, 68, 0.35)",
+    glowStart: "#ef4444",
+    glowEnd: "#f59e0b",
+    glowShadow: "rgba(239, 68, 68, 0.4)",
     bannerIcon: "🔴",
-    bannerGradient: "linear-gradient(135deg, #450a0a, #0f172a)",
+    bannerGradient: "linear-gradient(135deg, #450a0a, #18181b)",
     bannerSvg: `<svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg" style="width:70%;height:70%;opacity:0.75;"><circle cx="35" cy="50" r="12" fill="#ef4444" /><circle cx="65" cy="50" r="12" fill="#eab308" /><rect x="15" y="70" width="70" height="8" rx="2" fill="#3b82f6" /></svg>`
-  },
-  "car_race": {
-    glowStart: "#f97316",
-    glowEnd: "#ef4444",
-    glowShadow: "rgba(249, 115, 22, 0.35)",
-    bannerIcon: "🏎️",
-    bannerGradient: "linear-gradient(135deg, #431407, #18181b)",
-    bannerSvg: `<svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg" style="width:70%;height:70%;opacity:0.75;"><rect x="25" y="45" width="50" height="20" rx="4" fill="#f97316" /><circle cx="35" cy="65" r="8" fill="#111" stroke="#fff" stroke-width="2" /><circle cx="65" cy="65" r="8" fill="#111" stroke="#fff" stroke-width="2" /><path d="M 20 80 L 80 80" stroke="#9aa0a6" stroke-width="3" stroke-dasharray="8 6" /></svg>`
-  },
-  "pong": {
-    glowStart: "#06b6d4",
-    glowEnd: "#3b82f6",
-    glowShadow: "rgba(6, 182, 212, 0.35)",
-    bannerIcon: "🏓",
-    bannerGradient: "linear-gradient(135deg, #083344, #0f172a)",
-    bannerSvg: `<svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg" style="width:70%;height:70%;opacity:0.75;"><rect x="15" y="30" width="6" height="30" rx="2" fill="#fff" /><rect x="79" y="45" width="6" height="30" rx="2" fill="#fff" /><circle cx="48" cy="48" r="4" fill="#6366f1" /><line x1="50" y1="10" x2="50" y2="90" stroke="#334155" stroke-width="2" stroke-dasharray="4 4" /></svg>`
   }
 };
 
@@ -112,23 +96,7 @@ const STATIC_GAMES = [
     name: "Puissance 4",
     url: "./games/puissance4/index.html",
     theme: "from-yellow-500 to-red-600",
-    desc: "Alignez 4 jetons de votre couleur horizontalement, verticalement ou en diagonale pour gagner.",
-    online: true
-  },
-  {
-    id: "car_race",
-    name: "Car Racing",
-    url: "./games/car_race/index.html",
-    theme: "from-orange-500 to-red-600",
-    desc: "Un jeu de course de voitures frénétique pour 2 joueurs sur un même écran. Prenez le contrôle et gagnez la course !",
-    online: true
-  },
-  {
-    id: "pong",
-    name: "Pong",
-    url: "./games/pong/index.html",
-    theme: "from-cyan-500 to-blue-600",
-    desc: "Le jeu de tennis de table rétro légendaire. Simple, rapide et captivant pour deux joueurs.",
+    desc: "Alignez 4 jetons dans une matrice cybernétique néon. Déjouez l'adversaire avec tactique et anticipation.",
     online: true
   }
 ];

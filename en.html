@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Board Games - Game Platform</title>
+  <link rel="icon" type="image/png" href="assets/arcade-logo.png">
+  <meta property="og:title" content="Board Games - Game Platform">
+  <meta property="og:description" content="Digital adaptations of classic board, puzzle, and strategy games.">
+  <meta property="og:image" content="assets/arcade-hero.png">
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- Dynamic Glowing Background Blobs -->
+  <div class="background-glow blob-1"></div>
+  <div class="background-glow blob-2"></div>
+  <div class="background-glow blob-3"></div>
+
+  <!-- MAIN DASHBOARD VIEW -->
+  <div id="dashboard" class="view active">
+    <!-- Language Switcher -->
+    <div class="lang-switcher">
+      <a href="./" class="lang-link" title="Français">FR</a>
+      <span class="lang-divider">|</span>
+      <span class="lang-link active" title="English">EN</span>
+    </div>
+
+    <header class="header">
+      <div class="hero-showcase">
+        <img src="assets/arcade-hero.png" alt="Board Games" class="hero-banner-img">
+        <div class="hero-gradient-overlay"></div>
+      </div>
+      <div class="brand">
+        <img src="assets/arcade-logo.png" alt="Logo" class="brand-logo">
+        <div class="brand-info">
+          <h1>Board Games</h1>
+          <p class="tagline">Digital adaptations of tabletop and strategy games &bull; Choose a game to play</p>
+        </div>
+      </div>
+    </header>
+
+    <main class="grid-container">
+      <div id="games-grid" class="games-grid">
+        <!-- Game Cards will be loaded dynamically here -->
+        <div class="loading-placeholder">
+          <div class="spinner"></div>
+          <p>Loading games...</p>
+        </div>
+      </div>
+    </main>
+    
+    <footer class="footer">
+      <p>Board Games Platform &bull; Digital adaptations of tabletop games &bull; Deployed on GitHub Pages</p>
+    </footer>
+  </div>
+
+  <!-- GAME IFRAME PLAY VIEW -->
+  <div id="game-view" class="view">
+    <!-- Sleek Control Bar -->
+    <div class="control-bar">
+      <button id="btn-back" class="btn btn-control">
+        <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>
+        Back to games
+      </button>
+      
+      <div class="active-game-info">
+        <span id="active-game-dot" class="status-dot online"></span>
+        <span id="active-game-title" class="active-title">Current game</span>
+      </div>
+
+      <div class="control-actions">
+        <select id="quick-switcher" class="quick-select">
+          <option value="" disabled selected>Switch game...</option>
+          <!-- Loaded dynamically -->
+        </select>
+        
+        <button id="btn-refresh" class="btn btn-icon" title="Restart game">
+          <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21.5 2v6h-6M21.34 15.57a10 10 0 1 1-.57-8.38l5.67-5.67"></path></svg>
+        </button>
+
+        <button id="btn-new-tab" class="btn btn-icon" title="Open in new tab">
+          <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
+        </button>
+      </div>
+    </div>
+
+    <!-- Iframe Container with Loading Overlay -->
+    <div class="iframe-wrapper">
+      <div id="iframe-loading" class="iframe-overlay">
+        <div class="spinner large"></div>
+        <p id="iframe-loading-text">Loading game...</p>
+      </div>
+      <iframe id="game-frame" src="about:blank"></iframe>
+    </div>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>

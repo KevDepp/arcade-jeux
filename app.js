@@ -50,11 +50,16 @@ const GAME_THEMES = {
   }
 };
 
-const STATIC_GAMES = [
+const isEnglish = document.documentElement.lang === "en" || window.location.pathname.includes("/en");
+const path = window.location.pathname;
+const isSubdir = path.includes("/en/") || path.endsWith("/en");
+const BASE_URL = isSubdir ? "../" : "./";
+
+const GAMES_FR = [
   {
     id: "toy-battle",
     name: "Toy Battle",
-    url: "./games/toy-battle/public/index.html",
+    url: "games/toy-battle/public/index.html",
     theme: "from-rose-600 to-pink-500",
     desc: "Jeu de stratégie tactique au tour par tour sur grille avec figurines et lignes de vue.",
     online: true
@@ -62,7 +67,7 @@ const STATIC_GAMES = [
   {
     id: "odyssee",
     name: "L'Odyssée des grenouilles",
-    url: "./games/odyssee/index.html",
+    url: "games/odyssee/index.html",
     theme: "from-emerald-600 to-teal-500",
     desc: "Jeu de réflexion et de logique : guidez les grenouilles à travers l'étang de nénuphar en nénuphar.",
     online: true
@@ -70,7 +75,7 @@ const STATIC_GAMES = [
   {
     id: "trio",
     name: "Trio",
-    url: "./games/trio/index.html",
+    url: "games/trio/index.html",
     theme: "from-amber-500 to-orange-600",
     desc: "Jeu de cartes tactique basé sur la mémoire et la déduction : retrouvez des trios de cartes identiques.",
     online: true
@@ -78,7 +83,7 @@ const STATIC_GAMES = [
   {
     id: "kalaha",
     name: "Kalaha",
-    url: "./games/kalaha/index.html",
+    url: "games/kalaha/index.html",
     theme: "from-blue-600 to-indigo-500",
     desc: "Jeu de plateau traditionnel de la famille des mancalas : semez et récoltez les graines dans vos loges.",
     online: true
@@ -86,7 +91,7 @@ const STATIC_GAMES = [
   {
     id: "blokus",
     name: "Blokus",
-    url: "./games/blokus/index.html",
+    url: "games/blokus/index.html",
     theme: "from-violet-600 to-purple-500",
     desc: "Jeu de stratégie combinatoire abstrait : placez vos pièces géométriques en touchant uniquement les coins.",
     online: true
@@ -94,12 +99,85 @@ const STATIC_GAMES = [
   {
     id: "puissance4",
     name: "Puissance 4",
-    url: "./games/puissance4/index.html",
+    url: "games/puissance4/index.html",
     theme: "from-yellow-500 to-red-600",
     desc: "Jeu de plateau classique d'alignement vertical : alignez quatre jetons de votre couleur pour l'emporter.",
     online: true
   }
 ];
+
+const GAMES_EN = [
+  {
+    id: "toy-battle",
+    name: "Toy Battle",
+    url: "games/toy-battle/public/index.html",
+    theme: "from-rose-600 to-pink-500",
+    desc: "Turn-based tactical grid strategy game featuring miniature figurines and line of sight.",
+    online: true
+  },
+  {
+    id: "odyssee",
+    name: "Frog Odyssey",
+    url: "games/odyssee/index.html",
+    theme: "from-emerald-600 to-teal-500",
+    desc: "Logic and puzzle game: guide frogs across the pond hopping from lily pad to lily pad.",
+    online: true
+  },
+  {
+    id: "trio",
+    name: "Trio",
+    url: "games/trio/index.html",
+    theme: "from-amber-500 to-orange-600",
+    desc: "Tactical card game based on memory and deduction: find triplets of identical cards.",
+    online: true
+  },
+  {
+    id: "kalaha",
+    name: "Kalaha",
+    url: "games/kalaha/index.html",
+    theme: "from-blue-600 to-indigo-500",
+    desc: "Traditional board game from the Mancala family: sow and harvest seeds across the pits.",
+    online: true
+  },
+  {
+    id: "blokus",
+    name: "Blokus",
+    url: "games/blokus/index.html",
+    theme: "from-violet-600 to-purple-500",
+    desc: "Abstract strategy board game: place your geometric polyomino pieces touching only at corners.",
+    online: true
+  },
+  {
+    id: "puissance4",
+    name: "Connect Four",
+    url: "games/puissance4/index.html",
+    theme: "from-yellow-500 to-red-600",
+    desc: "Classic vertical four-in-a-row alignment game: connect four tokens of your color to win.",
+    online: true
+  }
+];
+
+const I18N = {
+  fr: {
+    statusText: "Disponible",
+    playBtn: "Jouer",
+    quickSwitcherDefault: "Changer de jeu...",
+    loadingText: (name) => `Chargement de ${name}...`,
+  },
+  en: {
+    statusText: "Available",
+    playBtn: "Play",
+    quickSwitcherDefault: "Switch game...",
+    loadingText: (name) => `Loading ${name}...`,
+  }
+};
+
+const t = isEnglish ? I18N.en : I18N.fr;
+
+const STATIC_GAMES = (isEnglish ? GAMES_EN : GAMES_FR).map(g => ({
+  ...g,
+  url: BASE_URL + g.url
+}));
 
 // Initialize app
 document.addEventListener("DOMContentLoaded", () => {
@@ -166,12 +244,12 @@ function renderGamesGrid(games) {
     card.style.setProperty("--glow-end", theme.glowEnd);
     card.style.setProperty("--glow-shadow", theme.glowShadow);
     
-    const statusText = "Prêt";
+    const statusText = t.statusText;
     const statusClass = "online";
     
     card.innerHTML = `
       <div class="card-artwork" style="background: ${theme.bannerGradient}">
-        <img src="assets/${game.id}.png" class="artwork-img" alt="${game.name}" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+        <img src="${BASE_URL}assets/${game.id}.png" class="artwork-img" alt="${game.name}" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
         <div class="artwork-fallback" style="width:100%; height:100%; display:flex; align-items:center; justify-content:center;">
           ${theme.bannerSvg}
         </div>
@@ -186,7 +264,7 @@ function renderGamesGrid(games) {
         <h2 class="game-title">${theme.bannerIcon} ${game.name}</h2>
         <p class="game-desc">${game.desc}</p>
         <button class="btn btn-primary" onclick="launchGame('${game.id}')">
-          Jouer
+          ${t.playBtn}
           <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg>
         </button>
       </div>
@@ -201,7 +279,7 @@ function updateQuickSwitcher(games) {
   const switcher = document.getElementById("quick-switcher");
   
   // Clear extra options, keep the disabled placeholder
-  switcher.innerHTML = `<option value="" disabled selected>Changer de jeu...</option>`;
+  switcher.innerHTML = `<option value="" disabled selected>${t.quickSwitcherDefault}</option>`;
   
   games.forEach(game => {
     const option = document.createElement("option");
@@ -225,7 +303,7 @@ function launchGame(gameId) {
   
   // Set details and show loader
   activeGameTitle.textContent = game.name;
-  iframeLoadingText.textContent = `Chargement de ${game.name}...`;
+  iframeLoadingText.textContent = t.loadingText(game.name);
   iframeLoading.style.display = "flex";
   iframeLoading.style.opacity = "1";
   

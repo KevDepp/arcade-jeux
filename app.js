@@ -56,15 +56,15 @@ const STATIC_GAMES = [
     name: "Toy Battle",
     url: "./games/toy-battle/public/index.html",
     theme: "from-rose-600 to-pink-500",
-    desc: "Tactical war game with toy soldiers, pathfinding, and decision guidance.",
+    desc: "Jeu de stratégie tactique au tour par tour sur grille avec figurines et lignes de vue.",
     online: true
   },
   {
     id: "odyssee",
-    name: "Odyssée des grenouilles",
+    name: "L'Odyssée des grenouilles",
     url: "./games/odyssee/index.html",
     theme: "from-emerald-600 to-teal-500",
-    desc: "Navigate frogs through dangerous lily pads and water flows in this logic game.",
+    desc: "Jeu de réflexion et de logique : guidez les grenouilles à travers l'étang de nénuphar en nénuphar.",
     online: true
   },
   {
@@ -72,7 +72,7 @@ const STATIC_GAMES = [
     name: "Trio",
     url: "./games/trio/index.html",
     theme: "from-amber-500 to-orange-600",
-    desc: "A clever grid-based board game focused on three-in-a-row tactical alignments.",
+    desc: "Jeu de cartes tactique basé sur la mémoire et la déduction : retrouvez des trios de cartes identiques.",
     online: true
   },
   {
@@ -80,7 +80,7 @@ const STATIC_GAMES = [
     name: "Kalaha",
     url: "./games/kalaha/index.html",
     theme: "from-blue-600 to-indigo-500",
-    desc: "Traditional Mancala-style game with a gorgeous circular board and smart AI.",
+    desc: "Jeu de plateau traditionnel de la famille des mancalas : semez et récoltez les graines dans vos loges.",
     online: true
   },
   {
@@ -88,7 +88,7 @@ const STATIC_GAMES = [
     name: "Blokus",
     url: "./games/blokus/index.html",
     theme: "from-violet-600 to-purple-500",
-    desc: "Classic block placement strategy game. Block your opponents and occupy the board.",
+    desc: "Jeu de stratégie combinatoire abstrait : placez vos pièces géométriques en touchant uniquement les coins.",
     online: true
   },
   {
@@ -96,7 +96,7 @@ const STATIC_GAMES = [
     name: "Puissance 4",
     url: "./games/puissance4/index.html",
     theme: "from-yellow-500 to-red-600",
-    desc: "Alignez 4 jetons dans une matrice cybernétique néon. Déjouez l'adversaire avec tactique et anticipation.",
+    desc: "Jeu de plateau classique d'alignement vertical : alignez quatre jetons de votre couleur pour l'emporter.",
     online: true
   }
 ];
@@ -186,7 +186,7 @@ function renderGamesGrid(games) {
         <h2 class="game-title">${theme.bannerIcon} ${game.name}</h2>
         <p class="game-desc">${game.desc}</p>
         <button class="btn btn-primary" onclick="launchGame('${game.id}')">
-          Lancer la Partie
+          Jouer
           <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg>
         </button>
       </div>
@@ -201,7 +201,7 @@ function updateQuickSwitcher(games) {
   const switcher = document.getElementById("quick-switcher");
   
   // Clear extra options, keep the disabled placeholder
-  switcher.innerHTML = `<option value="" disabled selected>Changer de jeu rapidement...</option>`;
+  switcher.innerHTML = `<option value="" disabled selected>Changer de jeu...</option>`;
   
   games.forEach(game => {
     const option = document.createElement("option");
